@@ -4,9 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "start" : "node pool.js" 
- },
+    "start": "node pool.js"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.1.0",
+    "pg": "^8.9.0"
+  }
 }

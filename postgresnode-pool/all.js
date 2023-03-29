@@ -1,6 +1,6 @@
 const app = require("express")();
-const {Pool} = require("pg");
-const {Client} = require("pg");
+const { Pool } = require("pg");
+const { Client } = require("pg");
 
 let oldCount = 0;
 let oldSum = 0;
@@ -8,11 +8,9 @@ let poolCount = 0;
 let poolSum = 0;
 
 const pool = new Pool({
-    "host": "husseinmac.local",
+    "host": "127.0.0.1",
     "port": 5432,
-    "user":"postgres",
-    "password" : "postgres",
-    "database" : "husseindb",
+    "database": "pool_ex",
     "max": 10
 })
 
@@ -22,18 +20,16 @@ app.get("/old", async (req, res) => {
     oldCount++;
    
     const client = new Client({
-        "host": "husseinmac.local",
+        "host": "127.0.0.1",
         "port": 5432,
-        "user":"postgres",
-        "password" : "postgres",
-        "database" : "husseindb"
+        "database": "pool_ex",
     })
 
     //connect
     await client.connect();
     //return all rows
-    const results = await client.query("select * from employees")
-    console.table(results.rows)
+    const results = await client.query("select * from employee")
+    // console.table(results.rows)
     //end
     client.end();
 
@@ -51,8 +47,8 @@ app.get("/pool", async (req, res) => {
     const fromDate = new Date();
     poolCount ++;
     //return all rows
-    const results = await pool.query("select * from employees")
-    console.table(results.rows)
+    const results = await pool.query("select * from employee")
+    // console.table(results.rows)
     
 
     const toDate = new Date();

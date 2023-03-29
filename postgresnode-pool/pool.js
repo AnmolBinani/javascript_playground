@@ -3,11 +3,9 @@ const {Pool} = require("pg");
 
 
 const pool = new Pool({
-    "host": "husseinmac.local",
+    "host": "127.0.0.1",
     "port": 5432,
-    "user":"postgres",
-    "password" : "postgres",
-    "database" : "husseindb",
+    "database": "pool_ex",
     "max": 20,
     "connectionTimeoutMillis" : 0,
     "idleTimeoutMillis": 0
